@@ -51,7 +51,6 @@ jobs:
       # Install our package.
       - name: Install legacy_blinding
         run: |
-          cd legacy_blinding
           python -m pip install --upgrade pip
           python -m pip install .
           pytest ./tests
