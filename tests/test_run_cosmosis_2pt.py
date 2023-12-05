@@ -1,4 +1,6 @@
 import pytest
+from cosmosis.runtime.config import Inifile
+from cosmosis.runtime.pipeline import LikelihoodPipeline
 from blind_2pt_cosmosis.run_cosmosis_2pt import setup_pipeline, modify_settings, run_pipeline, run_cosmosis_togen_2ptdict
 
 def test_modify_settings():
@@ -55,3 +57,13 @@ def test_modify_settings_missing_section():
     # Exercise and Verify
     with pytest.raises(ValueError):
         modify_settings(ini, None, nz_file)
+
+def test_setup_pipeline():
+    # Setup
+    inifile = './src/blind_2pt_cosmosis/cosmosis_files/default_blinding_template.ini'
+    angles_file = 'angles.fits'
+    nz_file = 'nz.fits'
+
+    # Exercise
+    pipeline = setup_pipeline(inifile)
+    assert isinstance(pipeline, LikelihoodPipeline)
