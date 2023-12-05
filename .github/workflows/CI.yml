@@ -54,3 +54,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install .
           pytest ./tests
+
+      # Perform the unit test and outputs a coverage report
+      - name: Test with pytest
+        run: pytest --cov=legacy_blinding -r json-summary --cov-report xml ./tests
+
+      # Uploads the code coverage results to codecov.io
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
