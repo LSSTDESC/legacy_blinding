@@ -57,7 +57,7 @@ jobs:
 
       # Perform the unit test and outputs a coverage report
       - name: Test with pytest
-        run: pytest --cov=legacy_blinding --cov-report=xml ./tests
+        run: pytest --cov=blind_2pt_cosmosis --cov-report=xml ./tests
 
       # Uploads the code coverage results to codecov.io
       - uses: actions/checkout@v4
