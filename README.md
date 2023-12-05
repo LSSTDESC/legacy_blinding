@@ -1,4 +1,5 @@
 [![DESC Legacy Blinding for Cosmosis](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml/badge.svg)](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/github/LSSTDESC/legacy_blinding/graph/badge.svg?token=s16J9aYvpw)](https://codecov.io/github/LSSTDESC/legacy_blinding)
 [![arXiv](https://img.shields.io/badge/arXiv-1911.05929-red)](https://arxiv.org/abs/1911.05929)
 [![LSST DESC Blinding Slack](https://img.shields.io/badge/join-Slack-4A154B)](https://lsstc.slack.com/archives/CT14ZF2AH)
 
