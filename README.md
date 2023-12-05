@@ -1,3 +1,4 @@
+[![DESC Legacy Blinding for Cosmosis](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml/badge.svg)](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml)
 [![cov](https://LSSTDESC.github.io/legacy_blinding/badges/coverage.svg)](https://github.com/LSSTDESC/legacy_blinding/actions)
 # Legacy Cosmosis Blinding for Cosmosis
 
