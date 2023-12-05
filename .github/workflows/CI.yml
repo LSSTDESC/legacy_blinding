@@ -57,8 +57,14 @@ jobs:
 
       # Perform the unit test and outputs a coverage report
       - name: Test with pytest
-        run: pytest --cov=mydescpackage --cov-report xml ./tests
+        run: pytest --cov=legacy_blinding -r json-summary --cov-report xml ./tests
 
       # Uploads the code coverage results to codecov.io
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+
+      - name: Update Coverage Badge
+        # GitHub actions: default branch variable
+        # https://stackoverflow.com/questions/64781462/github-actions-default-branch-variable
+        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: we-cli/coverage-badge-action@main
