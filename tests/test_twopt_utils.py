@@ -1,5 +1,7 @@
 import pytest
-from blind_2pt_cosmosis.twopt_utils import get_dictkey_for_2pttype 
+import numpy as np
+from blind_2pt_cosmosis.twopt_utils import get_dictkey_for_2pttype
+from blind_2pt_cosmosis.twopt_utils import SpectrumInterp
 from blind_2pt_cosmosis.twopt_utils import get_twoptdict_from_pipeline_data
 from blind_2pt_cosmosis.twopt_utils import spectrum_array_from_block
 
@@ -27,6 +29,26 @@ def test_get_dictkey_for_2pttype():
     with pytest.raises(ValueError):
         get_dictkey_for_2pttype(type1, type2)
 
+def test_spectrum_interp_loglog():
+    angle = np.array([1, 2, 3])
+    spec = np.array([1, 4, 9])
+    interp = SpectrumInterp(angle, spec)
+    assert interp.interp_type == 'loglog'
+    assert np.isclose(interp(2), 4)
+
+def test_spectrum_interp_minus_loglog():
+    angle = np.array([1, 2, 3])
+    spec = np.array([-1, -4, -9])
+    interp = SpectrumInterp(angle, spec)
+    assert interp.interp_type == 'minus_loglog'
+    assert np.isclose(interp(2), -4)
+
+def test_spectrum_interp_log_ang():
+    angle = np.array([1, 2, 3])
+    spec = np.array([1, 0, -1])
+    interp = SpectrumInterp(angle, spec)
+    assert interp.interp_type == 'log_ang'
+    assert np.isclose(interp(2), 0)
 
 # # A mock datablock object for testing
 # class MockDatablock:
