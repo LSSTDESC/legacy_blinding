@@ -50,6 +50,22 @@ def test_spectrum_interp_log_ang():
     assert interp.interp_type == 'log_ang'
     assert np.isclose(interp(2), 0)
 
+def test_get_twoptdict_from_pipeline_data():
+    # Setup
+    class MockData:
+        def has_section(self, section):
+            return section == 'mock_section'
+
+    mock_data = MockData()
+
+    # Exercise
+    result = get_twoptdict_from_pipeline_data(mock_data)
+    print(result)
+    # Verify
+    assert isinstance(result, dict)
+    # assert 'mock_key' in result
+    # assert result['mock_key'] == 'mock_value'
+
 # # A mock datablock object for testing
 # class MockDatablock:
 #     def has_section(self, section):
