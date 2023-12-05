@@ -48,6 +48,12 @@ jobs:
       - name: Install dependencies
         run: ${{ matrix.INSTALL_DEPS }}
 
+      - name: Setup cosmosis standard library
+        run: |
+          source cosmosis-configure
+          conda install -c conda-forge cosmosis-build-standard-library
+          cosmosis-build-standard-library -i
+
       # Install our package.
       - name: Install legacy_blinding
         run: |
