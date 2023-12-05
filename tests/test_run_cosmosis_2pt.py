@@ -61,9 +61,21 @@ def test_modify_settings_missing_section():
 def test_setup_pipeline():
     # Setup
     inifile = './src/blind_2pt_cosmosis/cosmosis_files/default_blinding_template.ini'
-    angles_file = 'angles.fits'
-    nz_file = 'nz.fits'
+    angles_file = './src/blind_2pt_cosmosis/cosmosis_files/sim_fiducial.fits'
+    nz_file = './src/blind_2pt_cosmosis/cosmosis_files/sim_fiducial.fits'
 
     # Exercise
     pipeline = setup_pipeline(inifile)
+    assert isinstance(pipeline, LikelihoodPipeline)
+
+    # Exercise
+    pipeline = setup_pipeline(inifile, angles_file=angles_file)
+    assert isinstance(pipeline, LikelihoodPipeline)
+
+    # Exercise
+    pipeline = setup_pipeline(inifile, nz_file=angles_file)
+    assert isinstance(pipeline, LikelihoodPipeline)
+
+    # Exercise
+    pipeline = setup_pipeline(inifile, nz_file=angles_file, angles_file=angles_file)
     assert isinstance(pipeline, LikelihoodPipeline)
