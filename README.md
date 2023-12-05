@@ -1,4 +1,4 @@
-[![cov](https://arthurmloureiro.github.io/legacy_blinding/badges/coverage.svg)](https://github.com/arthurmloureiro/legacy_blinding/actions)
+[![cov](https://LSSTDESC.github.io/legacy_blinding/badges/coverage.svg)](https://github.com/LSSTDESC/legacy_blinding/actions)
 # Legacy Cosmosis Blinding for Cosmosis
 
 This repository contains an implementation of [Muir et al. 2020](https://arxiv.org/abs/1911.05929) data-vector blinding strategy using Cosmosis V2.
