@@ -1,7 +1,9 @@
-# Legacy Cosmosis Blinding for 2pt Data-Vectors using Cosmosis
+# Legacy Cosmosis Blinding for Cosmosis
 
 This repository contains an implementation of [Muir et al. 2020](https://arxiv.org/abs/1911.05929) data-vector blinding strategy using Cosmosis V2.
 The package in this repository is a direct adaptation of Jessie Muir's DES Y3 blinding scripts to the DESC context.
+
+Supports 3x2pt data-vector blinding.
 
 For the DESC Blinding Library, see [here](https://github.com/LSSTDESC/Blinding).
 
