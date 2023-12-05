@@ -50,7 +50,6 @@ jobs:
 
       - name: Setup cosmosis standard library
         run: |
-          source cosmosis-configure
           conda install -c conda-forge cosmosis-build-standard-library
           cosmosis-build-standard-library -i
 
