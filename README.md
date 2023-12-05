@@ -1,7 +1,7 @@
 [![DESC Legacy Blinding for Cosmosis](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml/badge.svg)](https://github.com/LSSTDESC/legacy_blinding/actions/workflows/CI.yml)
 [![arXiv](https://img.shields.io/badge/arXiv-1911.05929-red)](https://arxiv.org/abs/1911.05929)
 [![LSST DESC Blinding Slack](https://img.shields.io/badge/join-Slack-4A154B)](https://glass-dev.github.io/slack)
-[![cov](https://LSSTDESC.github.io/legacy_blinding/badges/coverage.svg)](https://lsstc.slack.com/archives/CT14ZF2AH)
+
 # Legacy Cosmosis Blinding for Cosmosis
 
 This repository contains an implementation of [Muir et al. 2020](https://arxiv.org/abs/1911.05929) data-vector blinding strategy using Cosmosis V2.
