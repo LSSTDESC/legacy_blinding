@@ -35,23 +35,29 @@ jobs:
 
     # Our CI steps for this job.
     steps:
-      # Check out this repository code.
-      - name: Check out repository code
-        uses: actions/checkout@v3
-
-      # Install Python.
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+      - uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          activate-environment: cosmosis-env
+          channels: conda-forge
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          python-version: ${{ matrix.pyversion }}
+      - name: Install dependencies with conda
+        shell: bash -l {0}
+        run: mamba install -c conda-forge "cosmosis>=2.5" cosmosis-build-standard-library pytest
+      # # Install Python.
+      # - name: Set up Python ${{ matrix.python-version }}
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: ${{ matrix.INSTALL_DEPS }}
+      # - name: Install dependencies
+      #   run: ${{ matrix.INSTALL_DEPS }}
 
-      - name: Setup cosmosis standard library
-        run: |
-          conda install -c conda-forge cosmosis-build-standard-library
-          cosmosis-build-standard-library -i
+      # - name: Setup cosmosis standard library
+      #   run: |
+      #     conda install -c conda-forge cosmosis-build-standard-library
+      #     cosmosis-build-standard-library -i
 
       # Install our package.
       - name: Install legacy_blinding
@@ -63,6 +69,10 @@ jobs:
       # Perform the unit test and outputs a coverage report
       - name: Test with pytest
         run: pytest --cov=blind_2pt_cosmosis --cov-report=xml ./tests
+
+      # Check out this repository code.
+      - name: Check out repository code
+        uses: actions/checkout@v3
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
