@@ -51,9 +51,8 @@ jobs:
         shell: bash -l {0}
         run: mamba install -c conda-forge "cosmosis>=2.5" cosmosis-build-standard-library pytest
 
-      - name: Source cosmosis 
-        shell: bash -l {0}
-        run: source cosmosis-configure
+      # - name: Source cosmosis 
+        
 
       # # Install Python.
       # - name: Set up Python ${{ matrix.python-version }}
@@ -71,7 +70,9 @@ jobs:
 
       # Install our package.
       - name: Install legacy_blinding
+        shell: bash -l {0}
         run: |
+          source cosmosis-configure
           python -m pip install --upgrade pip
           python -m pip install .
           pytest ./tests
