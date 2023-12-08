@@ -64,6 +64,7 @@ jobs:
       #   run: ${{ matrix.INSTALL_DEPS }}
 
       - name: Setup cosmosis standard library
+        shell: bash -l {0}
         run: |
           source cosmosis-configure
           cosmosis-build-standard-library -i
