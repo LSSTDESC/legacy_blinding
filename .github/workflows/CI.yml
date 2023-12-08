@@ -79,6 +79,7 @@ jobs:
 
       # Perform the unit test and outputs a coverage report
       - name: Test with pytest
+        shell: bash -l {0}
         run: pytest --cov=blind_2pt_cosmosis --cov-report=xml ./tests
 
       - name: Upload coverage reports to Codecov
