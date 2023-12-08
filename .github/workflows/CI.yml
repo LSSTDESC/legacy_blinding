@@ -46,10 +46,15 @@ jobs:
           miniforge-variant: Mambaforge
           miniforge-version: latest
           python-version: ${{ matrix.pyversion }}
-          
+
       - name: Install dependencies with conda
         shell: bash -l {0}
         run: mamba install -c conda-forge "cosmosis>=2.5" cosmosis-build-standard-library pytest
+
+      - name: Source cosmosis 
+        shell: bash -l {0}
+        run: source cosmosis-configure
+
       # # Install Python.
       # - name: Set up Python ${{ matrix.python-version }}
       #   uses: actions/setup-python@v4
