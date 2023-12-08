@@ -12,6 +12,18 @@ def setup_pipeline(inifile, angles_file=None, nz_file=None):
     Initialize and set up the Cosmosis pipeline.
     """
     ini = Inifile(inifile)
+    # These are necessary to make sure that the pipeline doesn't
+    # accidentally print information we are trying to conceal
+    if 'test' in ini.__dict__['_sections'].keys():
+        ini.__dict__['_sections']['test']['save_dir']=''
+    if 'output' in ini.__dict__['_sections'].keys():
+        ini.__dict__['_sections']['output']['filename']=''
+    ini.__dict__['_sections']['pipeline']['debug']='F'
+    ini.__dict__['_sections']['pipeline']['quiet']='T'
+
+    if 'camb' in ini.__dict__['_sections'].keys():
+        ini.__dict__['_sections']['camb']['feedback']=0
+
     # Modify settings to suppress unnecessary outputs
     ini = modify_settings(ini, angles_file, nz_file)
     pipeline = LikelihoodPipeline(ini)

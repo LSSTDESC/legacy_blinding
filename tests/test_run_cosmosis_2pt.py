@@ -62,7 +62,6 @@ def test_setup_pipeline():
     # Setup
     inifile = './src/blind_2pt_cosmosis/cosmosis_files/default_blinding_template.ini'
     angles_file = './src/blind_2pt_cosmosis/cosmosis_files/sim_fiducial.fits'
-    nz_file = './src/blind_2pt_cosmosis/cosmosis_files/sim_fiducial.fits'
 
     # Exercise
     pipeline = setup_pipeline(inifile)
