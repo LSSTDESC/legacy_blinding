@@ -35,6 +35,10 @@ jobs:
 
     # Our CI steps for this job.
     steps:
+      # Check out this repository code.
+      - name: Check out repository code
+        uses: actions/checkout@v3
+    
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: cosmosis-env
@@ -42,6 +46,7 @@ jobs:
           miniforge-variant: Mambaforge
           miniforge-version: latest
           python-version: ${{ matrix.pyversion }}
+          
       - name: Install dependencies with conda
         shell: bash -l {0}
         run: mamba install -c conda-forge "cosmosis>=2.5" cosmosis-build-standard-library pytest
@@ -69,10 +74,6 @@ jobs:
       # Perform the unit test and outputs a coverage report
       - name: Test with pytest
         run: pytest --cov=blind_2pt_cosmosis --cov-report=xml ./tests
-
-      # Check out this repository code.
-      - name: Check out repository code
-        uses: actions/checkout@v3
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
